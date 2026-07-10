@@ -1,0 +1,57 @@
+.errorBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-2xl);
+  background: linear-gradient(160deg, #fff, var(--color-primary-soft));
+  border: 1px solid #f3c9c0;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--color-primary);
+}
+
+.message {
+  color: var(--color-text-muted);
+  max-width: 420px;
+}
+
+.retryButton {
+  margin-top: var(--spacing-sm);
+  padding: 12px 30px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  box-shadow: var(--shadow-glow-primary);
+  transition: transform var(--transition-fast), filter var(--transition-fast);
+}
+
+.retryButton:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.05);
+}

@@ -1,0 +1,37 @@
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-3xl) var(--spacing-lg);
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  margin-bottom: var(--spacing-sm);
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--color-secondary-soft), var(--color-accent-soft));
+  color: var(--color-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.title {
+  font-family: var(--font-family-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--color-text);
+}
+
+.message {
+  max-width: 380px;
+}

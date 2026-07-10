@@ -1,0 +1,50 @@
+.header {
+  padding-top: var(--spacing-2xl);
+  padding-bottom: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header h1 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.header p {
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+  max-width: 560px;
+}
+
+.filtersBar {
+  margin-block: var(--spacing-lg) var(--spacing-sm);
+  max-width: 560px;
+  animation: searchArrive 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+@keyframes searchArrive {
+  0% {
+    opacity: 0;
+    transform: translateY(-22px) scale(0.92);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(4px) scale(1.015);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filtersBar {
+    animation: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding-top: var(--spacing-xl);
+  }
+}

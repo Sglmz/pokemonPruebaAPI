@@ -1,0 +1,104 @@
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding-block: var(--spacing-2xl);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-sm);
+  max-width: 480px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin-bottom: var(--spacing-sm);
+  border-radius: 50%;
+  background: linear-gradient(160deg, var(--color-secondary-soft), var(--color-primary-soft));
+  color: var(--color-secondary);
+}
+
+.icon svg {
+  width: 38px;
+  height: 38px;
+  animation: iconSpin 6s linear infinite;
+}
+
+@keyframes iconSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .icon svg {
+    animation: none;
+  }
+}
+
+.code {
+  font-family: var(--font-family-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+}
+
+.title {
+  font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+}
+
+.message {
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--spacing-md);
+}
+
+.primaryAction,
+.secondaryAction {
+  padding: 13px 28px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  font-size: 0.92rem;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: #fff;
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.primaryAction:hover {
+  transform: translateY(-2px) scale(1.02);
+}
+
+.secondaryAction {
+  background-color: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.secondaryAction:hover {
+  border-color: var(--color-secondary);
+  color: var(--color-secondary);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,68 @@
+:root {
+  --color-primary: #e3350d;
+  --color-primary-dark: #b8280a;
+  --color-primary-light: #ff6b4a;
+  --color-primary-soft: #fdeae6;
+
+  --color-secondary: #2a75bb;
+  --color-secondary-dark: #1c5a94;
+  --color-secondary-light: #5b9bd5;
+  --color-secondary-soft: #e8f1fa;
+
+  --color-accent: #ffcb05;
+  --color-accent-dark: #e0a900;
+  --color-accent-soft: #fff8e0;
+
+  --color-bg: #f6f7fb;
+  --color-bg-alt: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f4f5f9;
+  --color-surface-alt: #fbfbfd;
+
+  --color-dark: #14161f;
+  --color-dark-alt: #1d2030;
+
+  --color-text: #171923;
+  --color-text-muted: #666b7a;
+  --color-text-soft: #9298a8;
+  --color-text-on-dark: #f4f5f9;
+  --color-text-on-dark-muted: #a7abbd;
+
+  --color-border: #e7e8f0;
+  --color-border-strong: #d6d8e4;
+
+  --color-success: #22c55e;
+  --color-error: #e3350d;
+  --color-warning: #ffcb05;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+  --radius-pill: 999px;
+
+  --shadow-xs: 0 1px 2px rgba(20, 22, 31, 0.06);
+  --shadow-sm: 0 2px 8px rgba(20, 22, 31, 0.07);
+  --shadow-md: 0 8px 24px rgba(20, 22, 31, 0.1);
+  --shadow-lg: 0 20px 48px rgba(20, 22, 31, 0.16);
+  --shadow-glow-primary: 0 8px 28px rgba(227, 53, 13, 0.28);
+  --shadow-glow-accent: 0 8px 24px rgba(255, 203, 5, 0.35);
+
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 40px;
+  --spacing-2xl: 64px;
+  --spacing-3xl: 96px;
+
+  --font-family-heading: 'Outfit', 'Segoe UI', system-ui, sans-serif;
+  --font-family-base: 'Inter', 'Segoe UI', system-ui, sans-serif;
+
+  --header-height: 76px;
+  --max-width: 1280px;
+
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
