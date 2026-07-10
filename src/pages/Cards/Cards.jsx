@@ -3,12 +3,19 @@ import { useSearchParams } from 'react-router-dom';
 import CardGrid from '../../components/cards/CardGrid';
 import Pagination from '../../components/ui/Pagination';
 import SearchBar from '../../components/search/SearchBar';
+import FilterMenu from '../../components/search/FilterMenu';
 import { useCards } from '../../hooks/useCards';
-import { DEFAULT_PAGE_SIZE } from '../../utils/constants';
+import { DEFAULT_PAGE_SIZE, POKEMON_TYPES, TYPE_LABELS, TYPE_ACCENT_COLORS } from '../../utils/constants';
 import styles from './Cards.module.css';
 
+const TYPE_OPTIONS = POKEMON_TYPES.map((type) => ({
+  value: type,
+  label: TYPE_LABELS[type] || type,
+  color: TYPE_ACCENT_COLORS[type],
+}));
+
 const Cards = () => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { cards, page, totalCount, status, error, fetchCards } = useCards();
 
   const activeFilters = {
@@ -21,6 +28,16 @@ const Cards = () => {
   useEffect(() => {
     fetchCards(activeFilters, 1);
   }, [searchParams.toString()]);
+
+  const handleTypeChange = (type) => {
+    const next = new URLSearchParams(searchParams);
+    if (type) {
+      next.set('type', type);
+    } else {
+      next.delete('type');
+    }
+    setSearchParams(next);
+  };
 
   const handlePageChange = (nextPage) => {
     fetchCards(activeFilters, nextPage);
@@ -48,6 +65,7 @@ const Cards = () => {
           placeholder="Busca una carta por nombre, tipo o código..."
           live
         />
+        <FilterMenu options={TYPE_OPTIONS} activeValue={activeFilters.type} onSelect={handleTypeChange} />
       </div>
 
       <CardGrid

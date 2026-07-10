@@ -17,9 +17,30 @@
 }
 
 .filtersBar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-sm);
   margin-block: var(--spacing-lg) var(--spacing-sm);
-  max-width: 560px;
   animation: searchArrive 0.55s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.filtersBar > *:first-child {
+  flex: 1;
+  min-width: 0;
+  max-width: 560px;
+}
+
+@media (max-width: 560px) {
+  .filtersBar {
+    flex-wrap: wrap;
+  }
+
+  .filtersBar > *:first-child {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 @keyframes searchArrive {

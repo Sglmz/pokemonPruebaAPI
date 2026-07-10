@@ -38,6 +38,20 @@ export const TYPE_ACCENT_COLORS = {
 
 export const DEFAULT_ACCENT_COLOR = '#e3350d';
 
+export const TYPE_LABELS = {
+  Fire: 'Fuego',
+  Water: 'Agua',
+  Grass: 'Planta',
+  Lightning: 'Eléctrico',
+  Psychic: 'Psíquico',
+  Fighting: 'Lucha',
+  Colorless: 'Normal',
+  Darkness: 'Siniestro',
+  Metal: 'Acero',
+  Dragon: 'Dragón',
+  Fairy: 'Hada',
+};
+
 export const TYPE_ALIASES = {
   fuego: 'Fire',
   fire: 'Fire',
@@ -108,6 +122,27 @@ export const POKEMON_CREATURE_TYPE_COLORS = {
   dragon: '#6247aa',
   dark: '#3a3f4b',
   fairy: '#e6739f',
+};
+
+export const POKEMON_CREATURE_TYPE_LABELS = {
+  normal: 'Normal',
+  fighting: 'Lucha',
+  flying: 'Volador',
+  poison: 'Veneno',
+  ground: 'Tierra',
+  rock: 'Roca',
+  bug: 'Bicho',
+  ghost: 'Fantasma',
+  steel: 'Acero',
+  fire: 'Fuego',
+  water: 'Agua',
+  grass: 'Planta',
+  electric: 'Eléctrico',
+  psychic: 'Psíquico',
+  ice: 'Hielo',
+  dragon: 'Dragón',
+  dark: 'Siniestro',
+  fairy: 'Hada',
 };
 
 export const POKEMON_CREATURE_TYPE_ALIASES = {

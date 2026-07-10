@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { SEARCH_MODE_CONFIG } from '../../utils/search';
 import styles from './SearchBar.module.css';
 
@@ -15,6 +15,7 @@ const SearchBar = ({
 }) => {
   const [term, setTerm] = useState(initialValue);
   const navigate = useNavigate();
+  const location = useLocation();
   const { basePath, detectIntent } = SEARCH_MODE_CONFIG[mode] || SEARCH_MODE_CONFIG.cards;
   const isFirstRender = useRef(true);
   const debounceRef = useRef(null);
@@ -31,17 +32,22 @@ const SearchBar = ({
       return;
     }
 
+    // En modo live, la búsqueda ocurre dentro del propio listado, se preservan otros
+    // filtros ya activos (como el tipo elegido en el menú de filtros) en vez de
+    // reemplazar toda la URL.
+    const params = live ? new URLSearchParams(location.search) : new URLSearchParams();
+
     if (intent.kind === 'type') {
-      navigate(`${basePath}?type=${encodeURIComponent(intent.value)}`, { replace });
-      return;
+      params.set('type', intent.value);
+      params.delete('term');
+    } else if (intent.kind === 'term') {
+      params.set('term', intent.value);
+    } else {
+      params.delete('term');
     }
 
-    if (intent.kind === 'term') {
-      navigate(`${basePath}?term=${encodeURIComponent(intent.value)}`, { replace });
-      return;
-    }
-
-    navigate(basePath, { replace });
+    const queryString = params.toString();
+    navigate(queryString ? `${basePath}?${queryString}` : basePath, { replace });
   };
 
   useEffect(() => {
