@@ -127,7 +127,7 @@ verificación se hizo de forma manual antes de cada entrega:
 El front-end puede publicarse tanto en GitHub Pages como en Netlify (o cualquier hosting
 estático), sin cambios en el código, ya que no depende de ningún backend propio.
 
-**GitHub Pages** se sirve desde una subcarpeta (`sglmz.github.io/pokemonPrueba/`), por lo
+**GitHub Pages** se sirve desde una subcarpeta (`sglmz.github.io/pokemonPruebaAPI/`), por lo
 que el build necesita conocer ese subpath de antemano. El workflow de GitHub Actions
 (`.github/workflows/deploy.yml`) ya lo resuelve automáticamente mediante la variable
 `VITE_BASE_PATH`, definida únicamente en ese workflow, y toma la key desde el secret
@@ -162,7 +162,4 @@ que lo justifique.
 
 ## Pendientes
 
-El proyecto no cuenta todavía con pruebas automatizadas. Tampoco se ha inicializado como
-repositorio Git, no tiene historial de commits ni está publicado en GitHub, por lo que tampoco
-existe una versión publicada en GitHub Pages. El código está listo para ese paso, resta ejecutar
-`git init`, generar los commits correspondientes y subir el repositorio.
+El proyecto no cuenta todavía con pruebas automatizadas.
