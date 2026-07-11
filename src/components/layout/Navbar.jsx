@@ -1,6 +1,7 @@
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import SearchBar from '../search/SearchBar';
 import SearchModeModal from '../search/SearchModeModal';
+import ThemeToggle from '../ui/ThemeToggle';
 import { useSearchModeChoice } from '../../hooks/useSearchModeChoice';
 import styles from './Navbar.module.css';
 
@@ -64,6 +65,8 @@ const Navbar = () => {
             ))}
           </ul>
         </nav>
+
+        <ThemeToggle />
       </div>
 
       <SearchModeModal

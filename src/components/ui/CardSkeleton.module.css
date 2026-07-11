@@ -1,0 +1,79 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.image,
+.line,
+.tag {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-surface-hover);
+}
+
+.image::after,
+.line::after,
+.tag::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-surface) 50%,
+    transparent
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-lg);
+}
+
+.line {
+  height: 12px;
+  border-radius: var(--radius-sm);
+}
+
+.lineTitle {
+  width: 70%;
+  height: 15px;
+}
+
+.lineSubtitle {
+  width: 45%;
+}
+
+.tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.tag {
+  width: 46px;
+  height: 20px;
+  border-radius: var(--radius-pill);
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image::after,
+  .line::after,
+  .tag::after {
+    animation: none;
+  }
+}

@@ -121,3 +121,34 @@ export const getPokemonTypes = () =>
     const result = await httpGet(POKEAPI_BASE_URL, '/type', {});
     return (result?.results || []).map((entry) => ({ name: entry.name }));
   });
+
+const flattenEvolutionChain = (chain) => {
+  const stages = [];
+  let currentStage = [chain];
+
+  while (currentStage.length > 0) {
+    stages.push(
+      currentStage.map((node) => {
+        const id = extractIdFromUrl(node.species.url);
+        return { id, name: node.species.name, sprite: buildSpriteUrl(id) };
+      }),
+    );
+    currentStage = currentStage.flatMap((node) => node.evolves_to);
+  }
+
+  return stages;
+};
+
+export const getEvolutionChain = (idOrName) =>
+  withCache(`evolution-chain:${String(idOrName).toLowerCase()}`, async () => {
+    const species = await httpGet(
+      POKEAPI_BASE_URL,
+      `/pokemon-species/${encodeURIComponent(String(idOrName).toLowerCase())}`,
+      {},
+    );
+
+    const chainId = extractIdFromUrl(species.evolution_chain.url);
+    const chainData = await httpGet(POKEAPI_BASE_URL, `/evolution-chain/${chainId}`, {});
+
+    return flattenEvolutionChain(chainData.chain);
+  });

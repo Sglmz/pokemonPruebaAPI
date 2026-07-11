@@ -1,0 +1,32 @@
+.toggle {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast), transform var(--transition-fast),
+    background-color var(--transition-fast);
+}
+
+.toggle:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px) rotate(12deg);
+}
+
+.icon {
+  grid-area: 1 / 1;
+  width: 20px;
+  height: 20px;
+  transition: opacity var(--transition-base), transform var(--transition-base);
+}
+
+.iconHidden {
+  opacity: 0;
+  transform: scale(0.5) rotate(-45deg);
+  pointer-events: none;
+}

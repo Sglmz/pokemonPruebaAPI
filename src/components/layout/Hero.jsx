@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { getCardById } from '../../services/pokemon.service';
+import { getCardById, getRandomCard } from '../../services/pokemon.service';
 import { useSearchModeChoice } from '../../hooks/useSearchModeChoice';
 import styles from './Hero.module.css';
 import SearchBar from '../search/SearchBar';
@@ -10,6 +10,7 @@ const FEATURED_CARD_ID = 'base1-4';
 
 const Hero = () => {
   const [featuredCard, setFeaturedCard] = useState(null);
+  const [isRandomizing, setIsRandomizing] = useState(false);
   const navigate = useNavigate();
   const modeChoice = useSearchModeChoice(navigate);
 
@@ -26,6 +27,19 @@ const Hero = () => {
       cancelled = true;
     };
   }, []);
+
+  const handleRandomize = async () => {
+    setIsRandomizing(true);
+
+    try {
+      const card = await getRandomCard();
+      if (card) setFeaturedCard(card);
+    } catch {
+      // Si falla, se queda la carta que ya estaba mostrando.
+    } finally {
+      setIsRandomizing(false);
+    }
+  };
 
   return (
     <section className={styles.hero}>
@@ -62,15 +76,42 @@ const Hero = () => {
         </div>
 
         {featuredCard && (
-          <div className={`${styles.imageColumn} animate-scale-in`} aria-hidden="true">
-            <div className={styles.imageGlow} />
-            <img
-              src={featuredCard.images?.large || featuredCard.images?.small}
-              alt=""
-              className={styles.featuredImage}
-            />
+          <div className={`${styles.imageColumn} animate-scale-in`}>
+            <div className={styles.imageStage}>
+              <div className={styles.imageGlow} aria-hidden="true" />
+              <img
+                key={featuredCard.id}
+                src={featuredCard.images?.large || featuredCard.images?.small}
+                alt={featuredCard.name || ''}
+                className={`${styles.featuredImage} animate-scale-in`}
+              />
+            </div>
+
+            <button
+              type="button"
+              onClick={handleRandomize}
+              disabled={isRandomizing}
+              className={styles.randomizeButton}
+            >
+              <svg
+                className={isRandomizing ? `${styles.randomizeIcon} ${styles.spinning}` : styles.randomizeIcon}
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M17 3l4 4-4 4M3 17l4 4 4-4M21 7H8.5A5.5 5.5 0 0 0 5.6 16.8M3 17H15.5a5.5 5.5 0 0 0 2.9-9.8"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              {isRandomizing ? 'Buscando otra carta...' : 'Randomizar carta'}
+            </button>
           </div>
         )}
+
       </div>
 
       <SearchModeModal

@@ -56,6 +56,16 @@ export const getCardById = (id) =>
     return result?.data;
   });
 
+const RANDOM_POOL_SIZE = 50;
+const RANDOM_PAGE_RANGE = 400;
+
+export const getRandomCard = async () => {
+  const randomPage = Math.floor(Math.random() * RANDOM_PAGE_RANGE) + 1;
+  const result = await fetchCards({ q: '', page: randomPage, pageSize: RANDOM_POOL_SIZE });
+  if (!result.data.length) return null;
+  return result.data[Math.floor(Math.random() * result.data.length)];
+};
+
 export const getCardsBySet = async ({ setId, pageSize = 7 }) => {
   if (!setId) return [];
   const q = buildCardsQuery({ setId });
